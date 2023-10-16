@@ -1,0 +1,39 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../../styles/variable.scss';
+
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .form-container {
+        background-color: $background-basic;
+        padding: 10px 10px 50px;
+        margin: auto;
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+.error-style {
+    color: red !important;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.create-account {
+    text-decoration: none;
+    color: #fff;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .login-container {
+        align-items: normal;
+    }
+}

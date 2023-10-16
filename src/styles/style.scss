@@ -1,0 +1,34 @@
+@import '~bootstrap/scss/bootstrap';
+@import './variable.scss';
+
+.my-container {
+    margin: auto;
+}
+@media (min-width: 768px) {
+    .my-container {
+        max-width: calc(720px - 240px);
+    }
+}
+@media (min-width: 992px) {
+    .my-container {
+        max-width: calc(960px - 240px);
+    }
+}
+@media (min-width: 1200px) {
+    .my-container {
+        max-width: calc(1140px - 240px);
+    }
+}
+.input-container {
+    max-width: 317px;
+}
+@media (min-width: 992px) {
+    .input-container {
+        max-width: 317px;
+    }
+}
+@media (min-width: 1200px) {
+    .input-container {
+        max-width: 525px;
+    }
+}

@@ -1,0 +1,114 @@
+.home-container {
+    padding: 45px 0;
+    color: #fff;
+    position: absolute;
+    z-index: 0;
+    left: 240px;
+    right: 0;
+    top: 70px;
+    bottom: 90px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background: #2B1C42;
+    }
+
+    .header {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .slider {
+            height: 161.594px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            position: relative;
+
+            .slider-item {
+                position: absolute;
+                height: 100%;
+                transition: transform .5s ease-in-out, opacity .5s ease-in-out, z-index 0s linear .5s;
+                width: 33.33%;
+                z-index: 0;
+                opacity: 0;
+                border-radius: 8px;
+    
+                img {
+                    width: 100%;
+                    border-radius: 10px;
+                    cursor: pointer;
+                }
+            }
+
+            .left-item {
+                transform: translateX(-100%);
+                z-index: 1;
+                opacity: 1;
+                padding: 0 20px 0 0;
+            }
+            .center-item {
+                transform: translateX(0);
+                z-index: 1;
+                opacity: 1;
+                padding: 0 10px;
+            }
+            .right-item {
+                transform: translateX(100%);
+                z-index: 1;
+                opacity: 1;
+                padding: 0 0 0 20px;
+            }
+            .next-item {
+                transform: translateX(80%);
+                padding: 0 0 0 20px;
+            }
+            .last-item {
+                transform: translateX(-80%);
+                padding: 0 20px 0 0;
+            }
+        }
+
+        .arrow-icon {
+            position: absolute;
+            z-index: 3;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 25px;
+            background-color: hsla(0,0%,100%,.15);
+            border-radius: 50%;
+            display: none;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(.9);
+            }
+        }
+        .arrow-left {
+            left: 10px;
+        }
+        .arrow-right {
+            right: 10px;
+        }
+
+        &:hover {
+            .arrow-icon {
+                display: block;
+            }
+        }
+    }
+
+    .body  {
+        margin-top: 40px;
+    }
+}

@@ -1,0 +1,21 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../styles/variable.scss';
+
+.login-container, 
+.register {
+    .zing-content {
+        text-align: center;
+        height: 100%;
+        position: inherit;
+        top: 0;
+    }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .login-container, 
+    .register {
+        .zing-content {
+            top: 110px;
+        }
+    }
+}

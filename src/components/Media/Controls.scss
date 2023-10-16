@@ -1,0 +1,38 @@
+.controls {
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 53px;
+    margin-bottom: 0;
+
+    .icon-control {
+        cursor: pointer;
+    }
+
+    .icon-size-big {
+        font-size: 37px;
+
+        &:hover {
+            color: #AF67D5;
+        }
+    }
+    .icon-size-small {
+        font-size: 17px;
+        padding: 4px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &:hover {
+            background-color: #282231;
+        }
+    }
+
+    .active {
+        color: #AF67D5;
+    }
+}

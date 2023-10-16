@@ -1,0 +1,83 @@
+// @import '~bootstrap/scss/bootstrap';
+@import '../../../styles/variable.scss';
+@import '../../../styles/style.scss';
+
+.sidebar-container {
+    background-color: $bg-color-231B2E !important;
+    width: 240px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+
+    .zing-content {
+        margin-left: 25px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+
+        .home-link {
+            cursor: pointer;
+            transition: 0.3s all;
+            text-decoration: none;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            .h4 {
+                font-weight: lighter;
+                color: #fff;
+            }
+        }
+    }
+
+    ul {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 1.5rem;
+            bottom: 0;
+            display: block;
+            background-color: $bg-color-3A3344;
+            height: 1px;
+            width: 190px;
+        }
+
+        .item {
+            height: 48px;
+            display: flex;
+            align-items: center;
+    
+            a, p {
+                text-decoration: none;
+                color: #CFCFD0;
+                display: flex;
+                align-items: center;
+                padding-left: 1.5rem;
+                height: 100%;
+                width: 100%;
+                margin-bottom: 0;
+                cursor: pointer;
+            }
+            .active {
+                background-color: $bg-color-3A3344;
+                color: #fff;
+                position: relative;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    width: 3px;
+                    background-color: #9B4DE0;
+                }
+            }
+        }
+    }
+}

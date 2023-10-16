@@ -1,0 +1,115 @@
+.artist-container {
+    padding: 45px 0;
+    color: #fff;
+    position: absolute;
+    z-index: 0;
+    left: 240px;
+    right: 0;
+    top: 70px;
+    bottom: 90px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background: #2B1C42;
+    }
+
+    table {
+        width: 100%;
+
+        .heigth {
+            height: 60px;
+        }
+
+        .bd-bottom {
+            border-bottom: 1px solid #231B2E;
+            border-radius: 3px;
+        }
+        
+        .header-list {
+            color: #85818B;
+            padding: 0 30px;
+            font-size: 14px;
+
+            th {
+                padding: 0 35px;
+            }
+        }
+
+        .body-list {
+
+            .song-item {
+                position: relative;
+
+                &:hover {
+                    background-color: #2F2739;
+                    opacity: 0.8;
+                    cursor: default;
+                }
+
+                .play-icon {
+                    position: absolute;
+                    top: 22px;
+                    left: 50px;
+                    opacity: 1 !important;
+                }
+                .song-item-image {
+                    height: inherit;
+                    display: flex;
+                    align-items: center;
+
+                    .song-image {
+                        cursor: pointer;
+
+                        .image {
+                            height: 40px;
+                            width: 40px;
+                            border-radius: 5px;
+                            margin-right: 9px;
+                        }
+                    }
+
+                    .song-info {
+
+                        .info-name {
+                            margin-bottom: 0;
+                        }
+                        .info-actor {
+                            margin-bottom: 0;
+                            font-size: 12px;
+                            color: #87838D;
+                        }
+                    }
+                }
+
+                td {
+                    padding: 0 35px;
+
+                    .basic {
+                        background-color: #8E4CFF;
+                        width: 57px;
+                    }
+                    .premium {
+                        background-color: #DCA519;
+                        width: 89px;
+                    }
+                    .classify {
+                        border-radius: 5px;
+                        font-weight: 700;
+                        font-size: 14px;
+                        color: #fff;
+                        padding: 0 7px;
+                        line-height: 18px;
+                        text-align: center;
+                    }
+                }
+
+
+            }
+        }
+    }
+}

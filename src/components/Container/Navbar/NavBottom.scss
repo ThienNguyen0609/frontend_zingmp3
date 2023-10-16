@@ -1,0 +1,11 @@
+@import '../../../styles/variable.scss';
+@import '../../../styles/style.scss';
+
+.audio-container {
+    background-color: #130C1C;
+    height: 90px;
+    width: 100%;
+    position: absolute;
+    z-index: 9999;
+    bottom: 0;
+}

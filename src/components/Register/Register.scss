@@ -1,0 +1,46 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../../styles/variable.scss';
+
+.register-container {
+    width: 100%;
+    background-color: #170F23;
+    padding-bottom: 10px;
+    
+    .register {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .form-container {
+        background-color: $background-basic;
+        padding: 10px 10px 50px;
+        margin: auto;
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+.error-style {
+    color: red !important;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-account {
+    text-decoration: none;
+    color: #fff;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .register-container {
+        .register {
+            align-items: normal;
+        }
+    }
+}
