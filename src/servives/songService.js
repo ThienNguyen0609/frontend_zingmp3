@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from '../configs/axios'
 
 const getAllSong = async () => {
-    const data = await axios.get('http://localhost:8080/api/library/music')
+    const data = await axios.get('/library/music')
     return data.data
 }
 

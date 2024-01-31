@@ -4,8 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ZingContent from '../ZingContent';
+import { isValidInput } from '../../servives/registerFormService';
 import { loginService } from '../../servives/userService';
-import { Toastify, isValidInput, showTypeToastify } from '../../servives/registerFormService';
+import { showTypeToastify } from '../../servives/toastifyService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
@@ -46,24 +47,21 @@ const Login = () => {
         else {
             try {
                 const res = await loginService(user);
-                const errorCode = res.data.errorCode
-                const errorMessage = res.data.message
-                const userData = res.data.data
-                console.log(errorMessage)
-                if(errorCode === 0) {
+                console.log(res)
+                if(res.errorCode) {
                     let data = {
                         isAuthenticated: true,
-                        token: "fakeToken",
+                        token: res.accessToken,
                         data: {
-                            ...userData
+                            ...res.data
                         }
                     }
                     localStorage.setItem("account", JSON.stringify(data));
+                    showTypeToastify(res.message, "success")
                     navigate('/')
                 }
                 else {
-                    console.log(errorMessage)
-                    showTypeToastify(errorMessage, "error")
+                    showTypeToastify(res.message, "error")
                 }
             }
             catch(err) {
@@ -126,7 +124,6 @@ const Login = () => {
                     </Form.Group>
                 </Form>
             </div>
-            <Toastify />
         </div>
   );
 }

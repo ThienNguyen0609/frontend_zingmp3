@@ -3,7 +3,8 @@ import songReducer from './features/songs/songSlice'
 import artistReducer from './features/artists/artistSlice'
 import artistAlbumsReducer from './features/artistAlbums/artistAlbumsSlice'
 import actionReducer from './features/action/actionSlice'
-import tokenReducer from './features/token/tokenSlice'
+import playlistReducer from './features/playlist/playlistSlice'
+import userReducer from './features/user/userSlice'
 
 export default configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
     actions: actionReducer,
     artists: artistReducer,
     artistAlbums: artistAlbumsReducer,
-    token: tokenReducer
+    myPlaylist: playlistReducer,
+    userInfo: userReducer,
   }
 })

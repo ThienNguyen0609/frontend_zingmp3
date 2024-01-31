@@ -4,8 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ZingContent from '../ZingContent';
+import { isValidInput } from '../../servives/registerFormService';
 import { registerService } from '../../servives/userService';
-import { Toastify, isValidInput, showTypeToastify } from '../../servives/registerFormService';
+import { showTypeToastify } from '../../servives/toastifyService';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
@@ -34,14 +35,14 @@ const Register = () => {
     }
     const [objCheckInput, setObjCheckInput] = useState(defaultValidInput)
 
-    const handleSubmitForm = (e) => {
+    const handleSubmitForm = async (e) => {
         e.preventDefault()
         const user = {
-            name: valueInput.name,
-            username: valueInput.username,
-            email: valueInput.email,
-            password: valueInput.password,
-            confirmPassword: valueInput.confirmPassword
+            Name: valueInput.name,
+            UserName: valueInput.username,
+            Email: valueInput.email,
+            Password: valueInput.password,
+            ConfirmPassword: valueInput.confirmPassword
         }
         const {isValid, validAttr} = isValidInput(valueInput)
         setObjCheckInput(defaultValidInput)
@@ -54,19 +55,17 @@ const Register = () => {
             })
         }
         else {
-            registerService(user)
-            .then(res => {
-                const errorCode = res.data.errorCode
-                const errorMessage = res.data.message
-                if(errorCode === 0) {
-                    setTimeout(()=>{
-                        navigate('/Login')
-                    }, 1000)
-                }
-                else {
-                    showTypeToastify(errorMessage, "error")
-                }
-            })
+            const res = await registerService(user)
+            const errorCode = res.data.errorCode
+            const errorMessage = res.data.errorMessage
+            if(errorCode === 0) {
+                setTimeout(()=>{
+                    navigate('/Login')
+                }, 1000)
+            }
+            else {
+                showTypeToastify(errorMessage, "error")
+            }
         }
     }
 
@@ -168,7 +167,6 @@ const Register = () => {
                     </Form.Group>
                 </Form>
             </div>
-            <Toastify />
             </div>
         </div>
   );

@@ -1,0 +1,147 @@
+.song-list {
+  margin-top: 10px;
+
+  table {
+    width: 100%;
+
+    .heigth {
+      height: 60px;
+    }
+
+    .bd-bottom {
+      border-bottom: 1px solid #231b2e;
+      border-radius: 3px;
+    }
+
+    .header-list {
+      color: #85818b;
+      padding: 0 30px;
+      font-size: 14px;
+
+      th {
+        padding: 0 35px;
+      }
+    }
+
+    .body-list {
+      .song-item {
+        position: relative;
+
+        &:hover {
+          background-color: #2f2739;
+        //   opacity: 0.8;
+          cursor: default;
+        }
+
+        .play-icon {
+          position: absolute;
+          top: 22px;
+          left: 50px;
+          opacity: 1 !important;
+        }
+        .song-item-image {
+          height: inherit;
+          display: flex;
+          align-items: center;
+
+          .song-image {
+            cursor: pointer;
+
+            .image {
+              height: 40px;
+              width: 40px;
+              border-radius: 5px;
+              margin-right: 9px;
+            }
+          }
+        }
+
+        td {
+          padding: 0 35px;
+
+          .basic {
+            background-color: #8e4cff;
+            width: 57px;
+          }
+          .premium {
+            background-color: #dca519;
+            width: 89px;
+          }
+          .classify {
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #fff;
+            padding: 0 7px;
+            line-height: 18px;
+            text-align: center;
+          }
+          .song-option {
+            opacity: 0.5;
+            cursor: pointer;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+          .option-content {
+            position: absolute;
+            background-color: #34224f;
+            border-radius: 5px;
+            padding-bottom: 16px;
+            right: 60px;
+            width: 280px;
+            z-index: 99999999999;
+
+            .option-header {
+                display: flex;
+                flex-direction: row;
+                padding: 16px;
+
+                .image {
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 5px;
+                    margin-right: 9px;
+                  }
+            }
+            .option-item {
+                padding: 10px 16px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #493961;
+                }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.song-info {
+  .info-name {
+    margin-bottom: 0;
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .info-actor {
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #87838d;
+
+    .actor {
+      text-decoration: none;
+      color: #87838d;
+      cursor: pointer;
+      
+      &:hover {
+        text-decoration: underline;
+        color: #B26ADA;
+      }
+    }
+  }
+}
