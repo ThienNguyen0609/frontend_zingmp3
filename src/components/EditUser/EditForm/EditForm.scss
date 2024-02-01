@@ -1,0 +1,40 @@
+.form-color {
+    background-color: #2f2739;
+    color: #fff;
+
+    &:focus {
+        background-color: #34224f;
+        color: #fff;
+    }
+}
+
+.form-label {
+    font-weight: 700;
+}
+
+.update-btn {
+    color: #fff;
+    background-color: #8e4cff;
+    width: 100px;
+    border: none;
+    border-radius: 20px;
+    transition: all .3s;
+
+    &:hover {
+        background-color: #50327c;
+    }
+}
+
+.back-home {
+    margin-left: 30px;
+    width: 130px;
+    height: 36px;
+    background-color: #ddd;
+    border-radius: 18px;
+    color: #130c1c;
+    transition: all .3s;
+
+    &:hover {
+        background-color: #aaa;
+    }
+}

@@ -12,10 +12,28 @@ const loginService = (user) => {
     return axios.post('/user/login', user)
 }
 
+const logoutService = (id) => {
+    return axios.post('/user/logout', {userId: id})
+}
+
 const authorityService = (songId, userId) => {
     return axios.post('/user/permission', {songId: songId, userId: userId})
 }
 
+const getService = (userId) => {
+    return axios.get(`/user/get/${userId}`)
+}
+
+const updateService = (user, userId) => {
+    return axios.put('/user/update', {user: user, userId: userId})
+}
+
 export {
-    registerService, loginService, authenticateService, authorityService
+    getService,
+    updateService,
+    registerService, 
+    loginService, 
+    logoutService,
+    authenticateService, 
+    authorityService
 }

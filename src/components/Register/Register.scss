@@ -5,6 +5,13 @@
     width: 100%;
     background-color: #170F23;
     padding-bottom: 10px;
+
+    .zing-content {
+        text-align: center;
+        height: 100%;
+        position: inherit;
+        top: 0;
+    }
     
     .register {
         display: flex;
@@ -34,6 +41,14 @@
 
     &:hover {
         text-decoration: underline;
+    }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .register {
+        .zing-content {
+            top: 110px;
+        }
     }
 }
 

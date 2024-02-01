@@ -1,0 +1,95 @@
+.plus-card {
+    width: 49%;
+    min-height: 300px;
+    padding: 40px;
+    background: #4D298B; /* fallback for old browsers */
+    background: -webkit-linear-gradient(315deg, #1B1533, #4D298B); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(315deg, #1B1533, #4D298B);
+    border-radius: 16px;
+
+    span {
+        color: #3b226a;
+    }
+
+    .btn-plus {
+        background-color: #9457ff;
+    }
+}
+
+.premium-card {
+    width: 49%;
+    min-height: 300px;
+    padding: 40px;
+    background: #785B0E; /* fallback for old browsers */
+    background: -webkit-linear-gradient(315deg, #1C1A14, #785B0E); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(315deg, #1C1A14, #785B0E);
+    border-radius: 16px;
+
+    span {
+        color: #654c0c;
+    }
+    .btn-premium {
+        background-color: #dca519;
+    }
+}
+
+.card-header {
+    position: relative;
+
+    >div {
+        display: flex;
+        align-items: center;
+    }
+
+    span {
+        background-color: aliceblue;
+        border-radius: 2px;
+        padding: 0 10px;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0 0 3px 10px;
+    }
+
+    .btn-card {
+        width: 100%;
+        height: 52px;
+        line-height: 52px;
+        text-align: center;
+        font-size: 18px;
+        border-radius: 26px;
+        margin: 20px 0;
+        cursor: pointer;
+        transition: all .3s;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: rgba(254,255,255,0.1);
+    }
+}
+
+.card-body {
+    margin-top: 40px;
+
+    .features {
+        padding: 0;
+        margin: 0;
+    
+        li {
+            list-style: none;
+            color: rgba(254,255,255,0.8);
+            margin-bottom: 8px;
+
+            .feature-list-icon{
+                margin-right: 10px;
+            }
+        }
+    }
+}

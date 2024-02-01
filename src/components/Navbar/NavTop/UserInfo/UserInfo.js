@@ -1,29 +1,26 @@
 import './UserInfo.scss'
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faUser, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { faSignOutAlt, faUser, faPen } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import { logoutService } from '../../../../servives/userService';
+import { useEffect, useRef } from 'react';
 
 const UserInfo = () => {
     const navigate = useNavigate()
-    const [account, setAccount] = useState(null)
+    const { user } = useSelector(state => state.userInfo)
 
-    const handleLogout = () => {
-        let data = {
+    const handleLogout = async () => {
+        const data = {
           isAuthenticated: false,
           token: "",
           data: null
         }
         localStorage.setItem("account", JSON.stringify(data));
+        const response = await logoutService(user.id)
+        console.log(response)
         navigate('/Login')
     }
-
-    useEffect(()=>{
-        const session = JSON.parse(localStorage.getItem("account"))
-        if(session && session.isAuthenticated) {
-            setAccount(session.data)
-        }
-    }, [])
 
     return (
         <div className='info-container'>
@@ -31,16 +28,22 @@ const UserInfo = () => {
                 <div className='user-icon'>
                     <FontAwesomeIcon icon={faUser} />
                 </div>
+                <label htmlFor="upload">
+                    <div className='edit-icon'>
+                        <FontAwesomeIcon icon={faPen} />
+                    </div>
+                    <input type="file" id="upload" style={{display:"none"}} />
+                </label>
                 <div className='user-info'>
-                    {account && 
+                    {user && 
                     <>
-                    <h4 className='user-username'>{account.username}</h4>
-                    <p className='user-kind'>{account.category}</p>
+                    <h4 className='user-username'>{user.username}</h4>
+                    <p className='user-kind'>{user.category.type}</p>
                     </>
                     }
                 </div>
             </div>
-            <Link className='upgrade-account' to='/'>
+            <Link className='upgrade-account' to='/Upgrade' target='_blank'>
                 Upgrade your account
             </Link>
             <div className='upgrade-pack'>
@@ -49,16 +52,16 @@ const UserInfo = () => {
                     <div><h4>Zing MP3</h4> <span className='premium kind-account'>PREMIUM</span></div>
                     <p className='upgrade-price'>60$/month</p>
                     <p className='upgrade-content'>All privilege of PLUS with monopoly music</p>
-                    <Link className='upgrade-link upgrade-link-premium' to="/">More information</Link>
+                    <Link className='upgrade-link upgrade-link-premium' to="/Upgrade" target='_blank'>More information</Link>
                 </div>
             </div>
             <div className='individual'>
                 <h5 className='text-white'>Individual</h5>
-                <Link to="/" className='detail'>
+                <Link to={`/user/profile?u=${user.id}`} className='detail'>
                     <div className='icon'>
-                        <FontAwesomeIcon icon={faInfoCircle} />
+                        <FontAwesomeIcon icon={faUser} />
                     </div>
-                    <span>Detail</span>
+                    <span>Profile</span>
                 </Link>
                 <button onClick={()=>handleLogout()} className='detail'>
                     <div className='icon'>

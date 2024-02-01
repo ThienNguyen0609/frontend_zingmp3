@@ -8,6 +8,13 @@
     align-items: center;
     position: relative;
 
+    .zing-content {
+        text-align: center;
+        height: 100%;
+        position: inherit;
+        top: 0;
+    }
+
     .form-container {
         background-color: $background-basic;
         padding: 10px 10px 50px;
@@ -29,6 +36,14 @@
 
     &:hover {
         text-decoration: underline;
+    }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .login-container {
+        .zing-content {
+            top: 110px;
+        }
     }
 }
 

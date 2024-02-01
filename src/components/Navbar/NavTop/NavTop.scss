@@ -5,7 +5,6 @@
     z-index: 99;
     width: calc(100% - 240px);
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    background-color: transparent;
 
     .navbar-search {
         position: relative;
@@ -239,6 +238,12 @@
                 color: #5C5765;
                 cursor: pointer;
             }
+        }
+
+        .border-vip {
+            border: 3px solid #DCA519;
+            width: 41px;
+            height: 41px;
         }
     }
 }

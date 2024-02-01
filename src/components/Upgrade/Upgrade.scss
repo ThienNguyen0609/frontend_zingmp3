@@ -1,0 +1,128 @@
+.upgrade-container {
+    position: relative;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100vh;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+      }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background: #2B1C42;
+    }
+
+    .upgrade-image {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        z-index: 0;
+    }
+
+    .upgrade {
+        position: relative;
+        margin: auto;
+        z-index: 1;
+    
+        .header-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 80px;
+            background: rgba(10,13,20,.86);
+            border-bottom: 1px solid rgba(255,255,255,.05);
+            backdrop-filter: blur(30px);
+            z-index: 2;
+
+            .header {
+                position: relative;
+                margin: auto;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .zing-icon {
+                    margin-bottom: 0;
+                    font-size: 28px;
+                }
+    
+                .user-icon {
+                    font-size: 17px;
+                    background-color: #ccc;
+                    height: 38px;
+                    width: 38px;
+                    text-align: center;
+                    line-height: 38px;
+                    border-radius: 50%;
+                    cursor: pointer;
+    
+                    svg {
+                        color: #5C5765;
+                        cursor: pointer;
+                    }
+                }
+    
+                .border-vip {
+                    border: 3px solid #DCA519;
+                    width: 41px;
+                    height: 41px;
+                }
+            }
+        }
+
+        .body {
+            width: 100%;
+            
+            .body-header {
+                height: 500px;
+                width: 100%;
+                padding-top: 250px;
+
+                p {
+                    margin-bottom: 0;
+                }
+
+                .part1 {
+                    color: #fff;
+                    font-size: 70px;
+                    font-weight: 700;
+                }
+
+                .part2 {
+                    color: #ccc;
+                    font-size: 24px;
+                }
+            }
+
+            .body-middle {
+                .upgradde-card {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 40px 0;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .upgrade, .header {
+        max-width: 598px;
+    }
+}
+
+@media (min-width: 992px) {
+    .upgrade, .header {
+        max-width: 822px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .upgrade, .header {
+        max-width: 1030px;
+    }
+}

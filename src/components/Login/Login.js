@@ -78,7 +78,10 @@ const Login = () => {
     }, [])
     return (
         <div className='login-container pt-5 container flex-md-row flex-column'>
-            <ZingContent />
+            <div className='zing-content content-left col-6 text-white'>
+                <ZingContent />
+                <p>Hưởng thức âm nhạc bất tận, nghe mọi lúc mọi nơi</p>
+            </div>
             <div className='content-right form-container col-md-5 col-12'>
                 <Form onSubmit={(e)=>handleSubmitForm(e)}>
                     <Form.Group className='d-flex flex-column'>

@@ -8,6 +8,7 @@
     width: 350px;
     height: 395px;
     background-color: #34224F;
+    animation: showUserInfo .5s ease forwards;
 
     &::-webkit-scrollbar {
         width: 6px;
@@ -26,9 +27,35 @@
     }
 
     .info {
+      position: relative;
       display: flex;
       align-items: center;
       margin: 0 8px;
+
+      label {
+        display: none;
+        position: absolute;
+        width: 65px;
+        height: 65px;
+
+        .edit-icon {
+          position: absolute;
+          font-size: 15px;
+          background-color: rgba(1, 0, 0, .3);
+          color: #EFF1FA;
+          height: 64px;
+          width: 64px;
+          text-align: center;
+          line-height: 64px;
+          border-radius: 50%;
+          cursor: pointer;
+          margin-right: 10px;
+        }
+
+        &:hover {
+          display: block;
+        }
+      }
 
       .user-icon {
         font-size: 30px;
@@ -41,6 +68,10 @@
         border-radius: 50%;
         cursor: default;
         margin-right: 10px;
+
+        &:hover + label {
+          display: block;
+        }
       }
 
       .user-info {
@@ -224,4 +255,15 @@
         }
       }
     }
+}
+
+@keyframes showUserInfo {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 395px;
+    opacity: 1;
+  }
 }

@@ -1,16 +1,19 @@
 import './NavTop.scss'
 
 import UserInfo from './UserInfo/UserInfo';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight, faSearch, faUser, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import axios from '../../../configs/axios';
 import SearchItem from './SearchItem/SearchItem';
 import _ from 'lodash';
+import { useSelector } from 'react-redux';
 
 const NavTop = () => {
+    const infoRef = useRef()
     const navigate = useNavigate()
+    const {user} = useSelector(state => state.userInfo)
     const resultRef = useRef()
     const inputRef = useRef()
     const [search, setSearch] = useState('')
@@ -39,6 +42,9 @@ const NavTop = () => {
         if(search && e.target.closest(".search-input")) {
             resultRef.current.classList.remove("d-none")
             inputRef.current.classList.add("input-focus")
+        }
+        if(!e.target.closest(".info-container") && isShowInfoUser) {
+            setIsShowInfoUser(false)
         }
     })
 
@@ -98,10 +104,10 @@ const NavTop = () => {
                         </div>
                     </div>
                 </div>
-                <div onClick={(e)=>handleShowInfoUser(e)} className='user-icon'>
+                <div onClick={(e)=>handleShowInfoUser(e)} className={`user-icon ${user.category === "VIP" && "border-vip"}`}>
                     <FontAwesomeIcon icon={faUser} />
                 </div>
-                {isShowInfoUser && <UserInfo />}
+                {isShowInfoUser && <UserInfo ref={infoRef} />}
             </div>
         </div>
     )

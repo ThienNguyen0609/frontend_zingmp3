@@ -1,0 +1,19 @@
+.edit-user-container {
+    padding: 45px 0;
+    color: #fff;
+    position: absolute;
+    z-index: 0;
+    left: 240px;
+    right: 0;
+    top: 70px;
+    bottom: 90px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+      }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background: #2B1C42;
+    }
+}

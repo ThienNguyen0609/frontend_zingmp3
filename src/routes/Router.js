@@ -18,6 +18,9 @@ import Playlist from "../components/Playlist/Playlist";
 import Video from "../components/Navbar/NavBottom/Media/Video";
 import Artist from "../components/ArtistInfo/Artist";
 import Search from "../components/Search/Search";
+import Upgrade from "../components/Upgrade/Upgrade";
+import Profile from "../components/Profile/Profile";
+import EditUser from "../components/EditUser/EditUser";
 
 const router = createBrowserRouter([
     {
@@ -61,8 +64,20 @@ const router = createBrowserRouter([
                 {
                     path: "/search/all",
                     element: <Search />
+                },
+                {
+                    path: "/user/profile",
+                    element: <Profile />
+                },
+                {
+                    path: "/user/profile/edit",
+                    element: <EditUser />
                 }
             ]
+        },
+        {
+            path: "/Upgrade",
+            element: <Upgrade />
         }
       ]
     }

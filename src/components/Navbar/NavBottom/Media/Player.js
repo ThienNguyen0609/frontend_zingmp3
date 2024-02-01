@@ -64,7 +64,7 @@ const Player = (props) => {
             <div className='title w-25'>
                 <div className='song-image'>
                     <img
-                        src={require(`../../../../assets/images/${currentSong && !_.isEmpty(currentSong) && currentSong.image ? currentSong.image : "HayTraoChoAnh"}.jpg`)} 
+                        src={require(`../../../../assets/images/Albums/${currentSong && !_.isEmpty(currentSong) && currentSong.image ? currentSong.image : "HayTraoChoAnh"}.jpg`)} 
                         alt='Logo' className='image'
                     />
                 </div>

@@ -37,7 +37,7 @@ const SearchItem = ({item}) => {
       >
         <FontAwesomeIcon className="play-icon" icon={faPlay} />
         <img
-          src={require(`../../../../assets/images/${item.image}.jpg`)}
+          src={require(`../../../../assets/images/Albums/${item.image}.jpg`)}
           alt="logo"
         />
       </div>

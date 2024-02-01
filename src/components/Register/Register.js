@@ -56,9 +56,10 @@ const Register = () => {
         }
         else {
             const res = await registerService(user)
-            const errorCode = res.data.errorCode
-            const errorMessage = res.data.errorMessage
-            if(errorCode === 0) {
+            const errorCode = res.errorCode
+            const errorMessage = res.message
+            if(errorCode) {
+                showTypeToastify(errorMessage, "success")
                 setTimeout(()=>{
                     navigate('/Login')
                 }, 1000)
@@ -69,15 +70,13 @@ const Register = () => {
         }
     }
 
-    useEffect(()=>{
-        // axios.post('http://localhost:8080/api/users', {username: 'haibadong',password: '1234'})
-        // .then(res => console.log(res))
-    }, [])
-
     return (
         <div className='register-container'>
             <div className='register pt-5 container flex-md-row flex-column mb-5'>
-            <ZingContent />
+            <div className='zing-content content-left col-6 text-white'>
+                <ZingContent />
+                <p>Hưởng thức âm nhạc bất tận, nghe mọi lúc mọi nơi</p>
+            </div>
             <div className='content-right form-container col-md-5 col-12'>
                 <Form onSubmit={(e)=>handleSubmitForm(e)}>
                     <Form.Group className='d-flex flex-column'>
