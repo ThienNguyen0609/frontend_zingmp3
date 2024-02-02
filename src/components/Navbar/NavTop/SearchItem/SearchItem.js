@@ -10,7 +10,7 @@ import { authorityService } from "../../../../servives/userService";
 
 const SearchItem = ({item}) => {
   const [show, setShow] = useState(false)
-  const {user} = useSelector(state => state.userInfo)
+  const { user } = useSelector(state => state.user)
   const dispatch = useDispatch()
 
   const handleCheckPermission = async (song) => {

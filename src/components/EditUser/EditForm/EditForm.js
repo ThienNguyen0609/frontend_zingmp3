@@ -6,12 +6,15 @@ import { useState } from 'react';
 import { updateService } from '../../../servives/userService';
 import { showTypeToastify } from '../../../servives/toastifyService';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../../store/features/user/userSlice';
 
 const EditForm = ({user}) => {
     const [email, setEmail] = useState(user.email)
     const [dateofbirth, setDateofbirth] = useState(user.dateofbirth)
     const [country, setCountry] = useState(user.country)
     const [gender, setGender] = useState(user.gender)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleUpdateUser = async (e) => {
@@ -25,8 +28,9 @@ const EditForm = ({user}) => {
         }
         const response = await updateService(data, user.id)
         if(response.errorCode) {
-            showTypeToastify(response.message, "success")
-            navigate(`/user/profile?u=${user.id}`)
+          dispatch(setUser(response.user))
+          showTypeToastify(response.message, "success")
+          navigate(`/user/profile?u=${user.id}`)
         }
     }
 

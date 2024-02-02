@@ -3,7 +3,7 @@ import EditForm from "./EditForm/EditForm";
 import { useSelector } from "react-redux";
 
 const EditUser = () => {
-    const {user} = useSelector(state => state.userInfo)
+    const { user } = useSelector(state => state.user)
   return (
     <div className="edit-user-container">
       <div className="my-container">

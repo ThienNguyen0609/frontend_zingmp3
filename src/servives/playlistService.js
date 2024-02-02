@@ -1,14 +1,27 @@
 import axios from "../configs/axios";
 
+const getPlaylist = async (userId) => {
+    const data = await axios.get(`/myPlaylist/get/${userId}`)
+    return data
+}
+
 const addSongToPlaylist = async (userId, songId) => {
-    const data = await axios.post(`/myPlaylist/${userId}/${songId}/add`)
+    const request = {
+        userId: userId,
+        songId: songId
+    }
+    const data = await axios.post('/myPlaylist/add', request)
     return data
 }
 const removeFromPlaylist = async (userId, songId) => {
-    const data = await axios.post(`/myPlaylist/${userId}/${songId}/remove`)
+    const request = {
+        userId: userId,
+        songId: songId
+    }
+    const data = await axios.post('/myPlaylist/remove', request)
     return data
 }
 
 export {
-    addSongToPlaylist, removeFromPlaylist
+    getPlaylist, addSongToPlaylist, removeFromPlaylist
 }

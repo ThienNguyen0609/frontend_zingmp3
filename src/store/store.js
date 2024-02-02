@@ -13,6 +13,6 @@ export default configureStore({
     artists: artistReducer,
     artistAlbums: artistAlbumsReducer,
     myPlaylist: playlistReducer,
-    userInfo: userReducer,
+    user: userReducer,
   }
 })

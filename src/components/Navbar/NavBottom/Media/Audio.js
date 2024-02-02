@@ -8,7 +8,7 @@ import { showTypeToastify } from "../../../../servives/toastifyService"
 const Audio = ({list, playCurrentSong}) => {
     const audioRef = useRef()
     const didMount = useRef(true)
-    const { user } = useSelector(state => state.userInfo)
+    const { user } = useSelector(state => state.user)
 
     const [isPlaying, setIsPlaying] = useState(false)
     const [isMute, setIsMute]= useState(false)
@@ -23,7 +23,7 @@ const Audio = ({list, playCurrentSong}) => {
     const handlePlayPrevSong = async () => {
         const len = list.length
         if(len>1){
-            let data, cnt = 0
+            let data = {}, cnt = 0
 
             let index = list.findIndex(item => item.id === currentSong.id);
             do {

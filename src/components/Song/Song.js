@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import SongItem from './SongItem/SongItem';
 
 const Song = (props) => {
-    const {user} = useSelector(state => state.userInfo)
+    const { user } = useSelector(state => state.user)
     const dispatch = useDispatch()
 
     const handlePlaySong = async (item) => {

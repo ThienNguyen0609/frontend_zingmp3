@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 const NavTop = () => {
     const infoRef = useRef()
     const navigate = useNavigate()
-    const {user} = useSelector(state => state.userInfo)
+    const { user } = useSelector(state => state.user)
     const resultRef = useRef()
     const inputRef = useRef()
     const [search, setSearch] = useState('')
@@ -22,9 +22,6 @@ const NavTop = () => {
     
     const handleSearchElement = (value) => {
         setSearch(value)
-    }
-    const handleShowInfoUser = (e) =>{
-        setIsShowInfoUser(!isShowInfoUser)
     }
     const handleClick = (e) => {
         inputRef.current.classList.add("input-focus")
@@ -43,7 +40,7 @@ const NavTop = () => {
             resultRef.current.classList.remove("d-none")
             inputRef.current.classList.add("input-focus")
         }
-        if(!e.target.closest(".info-container") && isShowInfoUser) {
+        if(!e.target.closest(".info-container") && !e.target.closest("#user-image") && isShowInfoUser) {
             setIsShowInfoUser(false)
         }
     })
@@ -104,10 +101,10 @@ const NavTop = () => {
                         </div>
                     </div>
                 </div>
-                <div onClick={(e)=>handleShowInfoUser(e)} className={`user-icon ${user.category === "VIP" && "border-vip"}`}>
+                <div id='user-image' onClick={()=>setIsShowInfoUser(!isShowInfoUser)} className={`user-icon ${user?.category?.type === "VIP" && "border-vip"}`}>
                     <FontAwesomeIcon icon={faUser} />
                 </div>
-                {isShowInfoUser && <UserInfo ref={infoRef} />}
+                {isShowInfoUser && <UserInfo ref={infoRef} user={user} />}
             </div>
         </div>
     )

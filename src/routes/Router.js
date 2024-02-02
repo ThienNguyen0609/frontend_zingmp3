@@ -21,6 +21,7 @@ import Search from "../components/Search/Search";
 import Upgrade from "../components/Upgrade/Upgrade";
 import Profile from "../components/Profile/Profile";
 import EditUser from "../components/EditUser/EditUser";
+import ForgotPassword from "../components/ForgotPassword/ForgotPassword";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         {
             path: "/Register",
             element: <Register />
+        },
+        {
+            path: "/Forgotpassword",
+            element: <ForgotPassword />
         },
         {
             path: "/",

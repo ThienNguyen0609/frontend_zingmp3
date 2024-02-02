@@ -2,14 +2,12 @@ import './UserInfo.scss'
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faUser, faPen } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
 import { logoutService } from '../../../../servives/userService';
-import { useEffect, useRef } from 'react';
+import _ from 'lodash';
 
-const UserInfo = () => {
+const UserInfo = ({user}) => {
+    console.log(user)
     const navigate = useNavigate()
-    const { user } = useSelector(state => state.userInfo)
-
     const handleLogout = async () => {
         const data = {
           isAuthenticated: false,

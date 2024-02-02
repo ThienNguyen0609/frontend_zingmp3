@@ -119,7 +119,7 @@ const Login = () => {
                                 />
                             </Form.Group>
                         </Form.Group>
-                        <Form.Text className='error-style'></Form.Text>
+                        <Form.Text className='mb-3'><Link className='fg-pw' to='/Forgotpassword'>Forgor password?</Link></Form.Text>
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>

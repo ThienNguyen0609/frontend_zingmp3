@@ -24,10 +24,16 @@
     }
 }
 
-.error-style {
-    color: red !important;
-    display: block;
-    margin-bottom: 10px;
+.fg-pw {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 15px;
+    text-align: left;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .create-account {

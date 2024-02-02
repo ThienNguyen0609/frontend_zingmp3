@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const SongItem = (props) => {
   const item = props.item
   const actorList = item.actor.split(", ");
-  const { user } = useSelector((state) => state.userInfo);
+  const { user } = useSelector((state) => state.user);
   const [isHover, setIsHover] = useState({
     is: false,
     id: 0,
@@ -86,7 +86,7 @@ const SongItem = (props) => {
           <div className="option-content">
             <div className="option-header">
               <img
-                src={require(`../../../assets/images/${item.image}.jpg`)}
+                src={require(`../../../assets/images/Albums/${item.image}.jpg`)}
                 alt="Logo"
                 className="image"
               />
