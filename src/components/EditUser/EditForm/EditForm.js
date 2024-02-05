@@ -7,7 +7,7 @@ import { updateService } from '../../../servives/userService';
 import { showTypeToastify } from '../../../servives/toastifyService';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../../store/features/user/userSlice';
+import { getUser } from '../../../store/features/user/userSlice';
 
 const EditForm = ({user}) => {
     const [email, setEmail] = useState(user.email)
@@ -28,7 +28,7 @@ const EditForm = ({user}) => {
         }
         const response = await updateService(data, user.id)
         if(response.errorCode) {
-          dispatch(setUser(response.user))
+          dispatch(getUser(user.id))
           showTypeToastify(response.message, "success")
           navigate(`/user/profile?u=${user.id}`)
         }

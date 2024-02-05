@@ -1,21 +1,35 @@
 import './Upgrade.scss'
 
 import ZingContent from "../ZingContent"
-import UserInfo from './UserInfo/UserInfo';
 import UpgradeCard from './UpgradeCard/UpgradeCard';
+import PopoversUser from '../PopoversUser/PopoversUser';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCheck, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
+import { logoutService } from '../../servives/userService';
 import _ from 'lodash';
+import { useNavigate } from 'react-router-dom';
+import { showTypeToastify } from '../../servives/toastifyService';
 
 const Upgrade = () => {
     const [user, setUser] = useState({})
     const [isShowInfoUser, setIsShowInfoUser] = useState(false)
+    const navigate = useNavigate()
 
-    const handleShowInfoUser = () => {
-        setIsShowInfoUser(!isShowInfoUser)
+    const handleLogout = async () => {
+        const data = {
+          isAuthenticated: false,
+          token: "",
+          data: null
+        }
+        localStorage.setItem("account", JSON.stringify(data));
+        const response = await logoutService(user.id)
+        if(response.errorCode) showTypeToastify(response.message, "success")
+        else showTypeToastify(response.message, "warning")
+        navigate('/Login')
     }
+
     useEffect(()=>{
         const session = JSON.parse(localStorage.getItem("account"));
         console.log(session)
@@ -28,10 +42,20 @@ const Upgrade = () => {
                 <div className="header-container">
                     <div className='header'>
                         <ZingContent className={"zing-icon"} />
-                        <div onClick={(e)=>handleShowInfoUser(e)} className={`user-icon ${user.category === "VIP" && "border-vip"}`}>
+                        <div onClick={()=>setIsShowInfoUser(!isShowInfoUser)} className={`user-icon ${user.category === "VIP" && "border-vip"}`}>
                             <FontAwesomeIcon icon={faUser} />
                         </div>
-                        {isShowInfoUser && <UserInfo />}
+                        <PopoversUser user={user} show={isShowInfoUser}>
+                            <div className='individual'>
+                                <h5 className='text-white'>Individual</h5>
+                                <p onClick={()=>handleLogout()} className='detail'>
+                                    <div className='icon'>
+                                        <FontAwesomeIcon icon={faSignOutAlt} />
+                                    </div>
+                                    <span>Log out</span>
+                                </p>
+                            </div>
+                        </PopoversUser>
                     </div>
                 </div>
                 <div className="body">

@@ -1,30 +1,29 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { getPlaylist } from "../../../servives/playlistService";
 
 const initialState = {
-    myPlaylist: [],
-    loading: false
+    playlist: [],
+    playlistLoading: false
 }
 
-export const getMyPlaylist = createAsyncThunk("myPlaylist/getMyplaylist", async (Id)=>{
-    const myPlaylist = await getPlaylist(Id)
-    return myPlaylist
+export const getPlaylists = createAsyncThunk("playlists/getplaylists", async (Id)=>{
+    const playlist = await getPlaylist(Id)
+    return playlist
 })
 
 const playlistSlice = createSlice({
     name: "playlist",
     initialState,
     extraReducers: {
-        [getMyPlaylist.pending]: (state, action) => {
-            state.loading = true;
+        [getPlaylists.pending]: (state, action) => {
+            state.playlistLoading = true;
         },
-        [getMyPlaylist.fulfilled]: (state, action) => {
-            state.loading = false;
-            state.myPlaylist = action.payload;
+        [getPlaylists.fulfilled]: (state, action) => {
+            state.playlistLoading = false;
+            state.playlist = action.payload.playlist;
         },
-        [getMyPlaylist.rejected]: (state, action) => {
-            state.loading = false;
+        [getPlaylists.rejected]: (state, action) => {
+            state.playlistLoading = false;
         }
     }
 })

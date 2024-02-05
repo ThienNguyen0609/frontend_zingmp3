@@ -55,7 +55,7 @@ const Player = (props) => {
     }
     const handlePlayVideo = () => {
         if(!audioRef.current.paused) audioRef.current.pause()
-        navigate(`video-clip/watch?v=${currentSong.video}`)
+        navigate(`video-clip/watch?v=${currentSong.video}`, {state: {image: currentSong.image}})
     }
 
     return (

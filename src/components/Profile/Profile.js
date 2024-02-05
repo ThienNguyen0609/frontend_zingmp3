@@ -8,8 +8,6 @@ import { showTypeToastify } from '../../servives/toastifyService'
 const Profile = () => {
     const [searchParams] = useSearchParams()
     const [user, setUser] = useState({})
-
-    console.log(searchParams.get("u"))
     useEffect(()=>{
         const getUser = async () => {
             const response = await getService(searchParams.get("u"))
@@ -20,7 +18,7 @@ const Profile = () => {
         getUser()
     }, [])
     return (
-        <div className="profile-container">
+        <div className="component-container">
             <div className='profile-bg-image'>
                 <img src={require(`../../assets/images/discover_page/upgrade.png`)} alt='image' />
             </div>

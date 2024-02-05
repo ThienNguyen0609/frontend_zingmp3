@@ -1,11 +1,12 @@
 .sidebar-container {
     background-color: #231B2E !important;
     width: 240px;
-    position: fixed;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     box-sizing: border-box;
+    z-index: 3;
 
     .zing-content {
         margin-left: 25px;

@@ -11,7 +11,6 @@ import _ from 'lodash';
 import { useSelector } from 'react-redux';
 
 const NavTop = () => {
-    const infoRef = useRef()
     const navigate = useNavigate()
     const { user } = useSelector(state => state.user)
     const resultRef = useRef()
@@ -40,7 +39,7 @@ const NavTop = () => {
             resultRef.current.classList.remove("d-none")
             inputRef.current.classList.add("input-focus")
         }
-        if(!e.target.closest(".info-container") && !e.target.closest("#user-image") && isShowInfoUser) {
+        if(!e.target.closest(".popovers-container") && !e.target.closest("#user-image") && isShowInfoUser) {
             setIsShowInfoUser(false)
         }
     })
@@ -79,7 +78,7 @@ const NavTop = () => {
                     <div className='search-input-container' onClick={(e)=>handleClick(e)}>
                         <input 
                             type='text' className='search-input' value={search} name='search'
-                            placeholder='What are you looking for?' ref={inputRef}
+                            placeholder='What are you looking for?' ref={inputRef} autoComplete='false'
                             onChange={(e)=>handleSearchElement(e.target.value)}
                         />
                         <FontAwesomeIcon className='search-icon' icon={faSearch} />
@@ -104,7 +103,7 @@ const NavTop = () => {
                 <div id='user-image' onClick={()=>setIsShowInfoUser(!isShowInfoUser)} className={`user-icon ${user?.category?.type === "VIP" && "border-vip"}`}>
                     <FontAwesomeIcon icon={faUser} />
                 </div>
-                {isShowInfoUser && <UserInfo ref={infoRef} user={user} />}
+                <UserInfo user={user} show={isShowInfoUser} />
             </div>
         </div>
     )

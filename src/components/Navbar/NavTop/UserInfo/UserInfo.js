@@ -3,11 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faUser, faPen } from '@fortawesome/free-solid-svg-icons';
 import { logoutService } from '../../../../servives/userService';
-import _ from 'lodash';
+import PopoversUser from '../../../PopoversUser/PopoversUser';
 
-const UserInfo = ({user}) => {
-    console.log(user)
+const UserInfo = (props) => {
     const navigate = useNavigate()
+
     const handleLogout = async () => {
         const data = {
           isAuthenticated: false,
@@ -15,32 +15,13 @@ const UserInfo = ({user}) => {
           data: null
         }
         localStorage.setItem("account", JSON.stringify(data));
-        const response = await logoutService(user.id)
+        const response = await logoutService(props.user.id)
         console.log(response)
         navigate('/Login')
     }
 
     return (
-        <div className='info-container'>
-            <div className='info'>
-                <div className='user-icon'>
-                    <FontAwesomeIcon icon={faUser} />
-                </div>
-                <label htmlFor="upload">
-                    <div className='edit-icon'>
-                        <FontAwesomeIcon icon={faPen} />
-                    </div>
-                    <input type="file" id="upload" style={{display:"none"}} />
-                </label>
-                <div className='user-info'>
-                    {user && 
-                    <>
-                    <h4 className='user-username'>{user.username}</h4>
-                    <p className='user-kind'>{user.category.type}</p>
-                    </>
-                    }
-                </div>
-            </div>
+        <PopoversUser user={props.user} show={props.show}>
             <Link className='upgrade-account' to='/Upgrade' target='_blank'>
                 Upgrade your account
             </Link>
@@ -55,7 +36,7 @@ const UserInfo = ({user}) => {
             </div>
             <div className='individual'>
                 <h5 className='text-white'>Individual</h5>
-                <Link to={`/user/profile?u=${user.id}`} className='detail'>
+                <Link to={`/user/profile?u=${props.user.id}`} className='detail'>
                     <div className='icon'>
                         <FontAwesomeIcon icon={faUser} />
                     </div>
@@ -68,7 +49,7 @@ const UserInfo = ({user}) => {
                     <span>Log out</span>
                 </button>
             </div>
-        </div>
+        </PopoversUser>
     )
 }
 

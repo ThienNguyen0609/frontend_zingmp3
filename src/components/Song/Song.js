@@ -34,7 +34,7 @@ const Song = (props) => {
                     {!props.loading && props.array.map((item, index)=>{
                         return (
                             <SongItem key={item.id} item={item} option={props.option} isPlaylist={props.isPlaylist} icon={props.icon}
-                                 handleAction={props.handleAction} handlePlaySong={handlePlaySong} />
+                                 handlePlaySong={handlePlaySong} playlistId={props.playlistId} handleRemoveItem={props.handleRemoveItem} />
                         )
                     })}
                 </tbody>

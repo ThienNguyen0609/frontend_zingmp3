@@ -1,37 +1,40 @@
 import './Playlist.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlayCircle, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { useDispatch, useSelector } from 'react-redux'
-import Song from '../Song/Song'
+import { faPlayCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
-import { removeFromPlaylist } from '../../servives/playlistService'
-import { getMyPlaylist } from '../../store/features/playlist/playlistSlice'
-import { showTypeToastify } from '../../servives/toastifyService';
+import CreatePlaylistModal from './CreatePlaylistModal/CreatePlaylistModal'
+import { useSelector } from 'react-redux'
+import PlaylistItem from './PlaylistItem/PlaylistItem'
+import _ from 'lodash'
 
 const Playlist = () => {
-    const {myPlaylist, loading} = useSelector(state => state.myPlaylist)
-    const dispatch = useDispatch()
-    const [playlist, setPlaylist] = useState(myPlaylist)
-
-    const handleRemoveFromPlaylist = async (userId, songId) => {
-        const data = await removeFromPlaylist(userId, songId)
-        setPlaylist(playlist.filter(item => item.id !== songId))
-        if(data.errorCode) showTypeToastify(data.message, "success")
-        else showTypeToastify(data.message, "warning")
-        dispatch(getMyPlaylist(userId))
-    }
+    const {playlist, playlistLoading} = useSelector(state => state.playlist)
+    const [showModal, setShowModal] = useState(false)
+    console.log(playlist)
     return (
-        <div className='playlist-container'>
+        <div className='component-container'>
+            {showModal && (
+                <CreatePlaylistModal showModal={showModal} setShowModal={setShowModal} />
+            )}
             <div className='my-container'>
                 <div className='playlist-content'>
                     <h1>Playlist <span className='play-icon'><FontAwesomeIcon icon={faPlayCircle} /></span></h1>
                 </div>
-                <div>
-                    <Song 
-                        array={playlist} loading={loading} option="Remove from this playlist" isPlaylist={true}
-                        icon={faTrash} handleAction={handleRemoveFromPlaylist}
-                    />
+                <div className='playlist mt-4'>
+                    <div className='add-playlist column' onClick={()=>setShowModal(true)}>
+                        <div className='text-center'>
+                            <FontAwesomeIcon icon={faPlusCircle} />
+                            <h4>Create playlist</h4>
+                        </div>
+                    </div>
+                    {!playlistLoading && playlist && !_.isEmpty(playlist) && playlist.map((item) => {
+                        return (
+                            <PlaylistItem key={item.id} playlistItem={item} />
+                        )
+                    })}
+                    <div className='column'></div>
+                    <div className='column'></div>
                 </div>
             </div>
         </div>

@@ -36,9 +36,9 @@ const Discover = () => {
     }, [sliders])
 
     return (
-        <div className="discover-container">
+        <div className="component-container">
             <div className='my-container'>
-                <header className='header'>
+                <header className='discover-header'>
                     <div className='arrow-icon arrow-left' onClick={()=>handlePrev()}><FontAwesomeIcon icon={faChevronLeft} /></div>
                     <div className='slider' >
                         <div className={'slider-item ' + sliders[0]}><img src={require("../../assets/images/discover_page/AnhLuonNhuVay.jpg")} alt="picture0" /></div>
@@ -49,7 +49,7 @@ const Discover = () => {
                     </div>
                     <div className='arrow-icon arrow-right' onClick={()=>handleNext()}><FontAwesomeIcon icon={faChevronRight} /></div>
                 </header>
-                <div className='body'>
+                <div className='discover-body'>
                     <ArtistContainer />
                 </div>
             </div>

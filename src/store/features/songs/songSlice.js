@@ -7,8 +7,8 @@ const initialState = {
 }
 
 export const getSongs = createAsyncThunk("songs/getSongs", async ()=>{
-    const songs = await axios.get("/library/music")
-    return songs
+    const response = await axios.get("/library/music")
+    return response.songs
 })
 
 const songSlice = createSlice({

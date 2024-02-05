@@ -12,7 +12,7 @@ export default configureStore({
     actions: actionReducer,
     artists: artistReducer,
     artistAlbums: artistAlbumsReducer,
-    myPlaylist: playlistReducer,
+    playlist: playlistReducer,
     user: userReducer,
   }
 })

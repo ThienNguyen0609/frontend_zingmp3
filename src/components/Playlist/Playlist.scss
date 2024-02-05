@@ -1,45 +1,35 @@
-.playlist-container {
-    padding: 45px 0;
-    color: #fff;
-    position: absolute;
-    z-index: 0;
-    left: 240px;
-    right: 0;
-    top: 70px;
-    bottom: 90px;
-    overflow-y: auto;
-
-    &::-webkit-scrollbar {
-        width: 6px;
+.playlist-content {
+    .play-icon:hover {
+        color: #ddd;
+        cursor: pointer;
     }
-    
-    &::-webkit-scrollbar-thumb {
-        border-radius: 3px;
-        background: #2B1C42;
+}
+.playlist {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .column {
+        width: 210px;
     }
 
-    .playlist-content {
-        .play-icon:hover {
-            color: #ddd;
-            cursor: pointer;
+    .add-playlist {
+        height: 250px;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+        margin-top: 20px;
+
+        &:hover > div {
+            color: #8363b4;
         }
     }
-
-    .playlist-toast {
-        position: fixed;
-        display: flex;
-        background-color: #3a3344;
-        color: #d6d6d8;
-        border-left: 10px solid #231b2e;
-        border-radius: 5px;
-        align-items: center;
-        width: 250px;
-        height: 60px;
-        right: 5px;
-        padding: 10px;
-        top: 75px;
-        animation: messageSliderShow .5s ease forwards, messageSliderHide .5s linear 2.5s forwards;
-    }
+    
 }
 
 @keyframes messageSliderShow {

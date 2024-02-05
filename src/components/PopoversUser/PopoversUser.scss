@@ -1,0 +1,41 @@
+.individual {
+    position: relative;
+    color: #fff;
+    margin-top: 30px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -13px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #493961;
+    }
+
+    h5 {
+        padding-left: 8px;
+    }
+
+    .detail {
+        color: #DADABF;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 5px 8px;
+        border-radius: 5px;
+
+        .icon {
+            font-size: 20px;
+            width: 35px;
+        }
+
+        span {
+            margin-bottom: 3px;
+        }
+
+        &:hover {
+            background-color: #493961;
+        }
+    }
+}

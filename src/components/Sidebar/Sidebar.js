@@ -21,7 +21,7 @@ const Sidebar = () => {
                 <li className='item'><NavLink to='/Library/Song' >Library</NavLink></li>
             </ul>
             <ul className='ps-0 mb-0 pb-3'>
-                <li className='item'><NavLink to='/myPlaylist' >Playlist</NavLink></li>
+                <li className='item'><NavLink to='/playlist' >Playlist</NavLink></li>
             </ul>
         </div>
     )

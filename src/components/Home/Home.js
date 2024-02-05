@@ -4,22 +4,23 @@ import NavTop from "../Navbar/NavTop/NavTop";
 import NavBottom from "../Navbar/NavBottom/NavBottom";
 import Sidebar from "../Sidebar/Sidebar";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getMyPlaylist } from "../../store/features/playlist/playlistSlice";
-import { authenticateService, getService } from "../../servives/userService";
-import { setUser } from "../../store/features/user/userSlice";
+import { getPlaylists } from "../../store/features/playlist/playlistSlice";
+import { authenticateService } from "../../servives/userService";
+import { getUser } from "../../store/features/user/userSlice";
+import _ from "lodash";
 
 const Home = () => {
+  const { userLoading, user } = useSelector(state => state.user)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const checkUserAuthenticated = async (userId) => {
     const data = await authenticateService(userId);
     if (data.errorCode) {
-      dispatch(getMyPlaylist(userId));
-      const userData = await getService(userId)
-      dispatch(setUser(userData.user))
+      dispatch(getPlaylists(userId));
+      dispatch(getUser(userId))
     } else {
       const sessionData = {
         isAuthenticated: false,
@@ -43,12 +44,14 @@ const Home = () => {
   }, []);
   return (
     <>
-      <div className="create-container">
-        <NavBottom />
-        <Sidebar />
-        <NavTop />
-      </div>
-      <Outlet />
+      {!userLoading && user && !_.isEmpty(user) && (
+        <div className="create-container">
+          <NavBottom />
+          <Sidebar />
+          <NavTop />
+          <Outlet />
+        </div>
+      )}
     </>
   );
 };

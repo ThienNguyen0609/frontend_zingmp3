@@ -1,74 +1,53 @@
-.artist-container {
-    padding: 45px 0;
-    color: #fff;
+.header-on {
     position: absolute;
-    z-index: 0;
-    left: 240px;
+    left: 0;
     right: 0;
-    top: 70px;
-    bottom: 90px;
-    overflow-y: auto;
+    top: -70px;
+    height: 300px;
+    background-color: #2B1C42;
+    opacity: 0.7;
+    z-index: 1;
+}
 
-    &::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-        border-radius: 3px;
-        background: #2B1C42;
+.artist-header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -70px;
+    height: 300px;
+    z-index: 0;
+}
+.header-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
     }
 
-    .header-on {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: -70px;
-        height: 300px;
-        background-color: #2B1C42;
-        opacity: 0.7;
-        z-index: 1;
+    .artist-name {
+        margin-bottom: 0;
+        font-size: 50px;
+        font-weight: 700;
     }
-
-    .header {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: -70px;
-        height: 300px;
-        z-index: 0;
-    }
-    .header-content {
-        position: relative;
-        z-index: 2;
+    .play-icon {
+        width: 50px;
+        height: 50px;
         display: flex;
         align-items: center;
+        justify-content: center;
+        font-size: 50px;
+        cursor: pointer;
 
-        img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-        }
-
-        .artist-name {
-            margin-bottom: 0;
-            font-size: 50px;
-            font-weight: 700;
-        }
-        .play-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            cursor: pointer;
-
-            &:hover {
-                color: #ccc;
-            }
+        &:hover {
+            color: #ccc;
         }
     }
-    .body {
-        margin-top: 80px;
-    }
+}
+.body {
+    margin-top: 80px;
 }

@@ -1,0 +1,186 @@
+.result-item {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.5s;
+
+    .item-image {
+        display: flex;
+        align-items: center;
+        margin-right: 9px;
+        cursor: pointer;
+
+        .play-icon {
+            display: none;
+            color: #fff;
+            font-size: 18px;
+            position: absolute;
+            left: 39px;
+        }
+        img {
+            border-radius: 5px;
+            width: 52px;
+        }
+
+        &:hover .play-icon {
+            display: block;
+        }
+    }
+    
+
+    
+
+    &:hover {
+        background-color: #493961;
+    }
+
+    .item-info {
+        flex: 1;
+
+        .info-name {
+            margin-bottom: 0;
+            height: 24px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #fff;
+          }
+          .info-actor {
+            margin-bottom: 0;
+            font-size: 12px;
+            color: #87838d;
+          }
+    }
+
+    .item-option-container {
+        position: relative;
+        display: none;
+
+        .show-playlist {
+            display: none;
+            position: absolute;
+            background-color: #34224F;
+            color: #fff;
+            padding: 10px;
+            width: 230px;
+            height: 290px;
+            left: 165px;
+            top: -65px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+
+            &:hover {
+                display: block;
+            }
+
+            .search-playlist {
+              background: #493961;
+              color: #fff;
+              outline: none !important;
+              border: none;
+            }
+            .create-playlist-content {
+              margin-top: 10px;
+              height: 40px;
+              padding: 0 10px;
+              display: flex;
+              align-items: center;
+              cursor: pointer;
+              font-size: 20px;
+              border-bottom: 3px solid rgba(254, 255, 255, 0.5);
+
+              &:hover {
+                background-color: #493961;
+              }
+            }
+            .show-playlist-item {
+              margin-top: 5px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              padding: 0 10px;
+              border-bottom: 1px solid rgba(254, 255, 255, 0.1);
+              border-radius: 5px;
+              cursor: pointer;
+
+              &:hover {
+                background-color: #493961;
+              }
+            }
+
+            .icon {
+              margin-right: 10px;
+            }
+          }
+
+        .show-option {
+            display: none;
+            position: absolute;
+            // background-color: #34224F;
+            // color: #fff;
+            text-align: center;
+            // width: 130px;
+            // padding: 10px;
+            // border-radius: 5px;
+            top: 0;
+            left: 40px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            .option-content {
+                position: absolute;
+                width: 130px;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: #34224F;
+                color: #fff;
+                cursor: pointer;
+            }
+            .blabla {
+                position: absolute;
+                /* background-color: #34224F; */
+                /* color: #fff; */
+                /* padding: 10px; */
+                width: 230px;
+                height: 290px;
+                left: 125px;
+                top: -65px;
+                border-radius: 10px;
+            }
+
+            &:hover + .show-playlist {
+                display: block;
+            }
+        }
+
+        .item-option {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #695C7C;
+            }
+
+            .option {
+                color: #fff;
+            }
+        }
+
+        &:hover > .show-option {
+            display: block;
+        }
+    }
+
+    
+
+    &:hover .item-option-container {
+        display: block;
+    }
+}

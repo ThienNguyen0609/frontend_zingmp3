@@ -1,49 +1,54 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faEllipsisH, faPlusSquare, faCompactDisc } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import _ from "lodash";
+import { addSongToPlaylist, removeSongFromPlaylist } from "../../../servives/playlistService";
+import { showTypeToastify } from "../../../servives/toastifyService";
 
 const SongItem = (props) => {
   const item = props.item
   const actorList = item.actor.split(", ");
-  const { user } = useSelector((state) => state.user);
-  const [isHover, setIsHover] = useState({
-    is: false,
-    id: 0,
-  });
-  const [isShow, setIsShow] = useState(false);
+  const {playlist, playlistLoading} = useSelector(state => state.playlist)
 
-  const handleMouseOver = (id) => {
-    setIsHover({
-      is: true,
-      id: id,
-    });
-  };
-  const handleMouseOut = () => {
-    setIsHover({
-      is: false,
-      id: 0,
-    });
-  };
-  const handleClick = () => {
-    setIsShow(!isShow);
-  };
+  const [myPlaylist, setMyplaylist] = useState(playlist)
+  const [value, setValue] = useState("")
+  const [isShow, setIsShow] = useState(false);
+  const [isShowPlaylist, setIsShowPlaylist] = useState(false);
+  const handleAction = async (songId) => {
+    if(props.isPlaylist) {
+      const response = await removeSongFromPlaylist(props.playlistId, songId)
+      props.handleRemoveItem(songId)
+      if(response.errorCode) showTypeToastify(response.message, "success")
+      else showTypeToastify(response.message, "warning")
+    }
+    else {
+      setIsShowPlaylist(!isShowPlaylist)
+    }
+  }
+
+  const handleAddToPlaylist = async (playlistId) => {
+    const response = await addSongToPlaylist(playlistId, item.id)
+    if(response.errorCode) showTypeToastify(response.message, "success")
+    else showTypeToastify(response.message, "warning")
+    setIsShow(false)
+  }
+
+  useEffect(() => {
+    setMyplaylist(playlist.filter((item => item.namePlaylist.includes(value))))
+  }, [value])
   return (
     <tr className="song-item heigth bd-bottom">
       <td className="song-item-image">
         <div
           className="song-image"
-          onMouseOver={() => handleMouseOver(item.id)}
-          onMouseOut={() => handleMouseOut()}
           onClick={() => {
             localStorage.setItem("currentSong", JSON.stringify(item));
             props.handlePlaySong(item);
           }}
         >
-          {isHover.is && isHover.id === item.id && (
-            <FontAwesomeIcon className="play-icon" icon={faPlay} />
-          )}
+          <FontAwesomeIcon className="play-icon" icon={faPlay} />
           <img
             src={require(`../../../assets/images/Albums/${item.image}.jpg`)}
             alt="Logo"
@@ -78,7 +83,10 @@ const SongItem = (props) => {
       <td className="text-center">4:40</td>
       <td className="text-right position-relative">
         <FontAwesomeIcon
-          onClick={() => handleClick()}
+          onClick={() => {
+            setIsShow(!isShow)
+            if(!props.isPlaylist && isShowPlaylist) setIsShowPlaylist(false)
+          }}
           className="song-option"
           icon={faEllipsisH}
         />
@@ -109,12 +117,24 @@ const SongItem = (props) => {
             <div
               className="option-item"
               onClick={() => {
-                setIsShow(false);
-                props.handleAction(user.id, item.id);
+                handleAction(item.id);
               }}
             >
               <FontAwesomeIcon icon={props.icon} /> {props.option}
             </div>
+              {isShowPlaylist && (
+                <div className="show-playlist">
+                  <input className="form-control search-playlist" type="text" placeholder="Search playlist" value={value} onChange={(e)=>setValue(e.target.value)} />
+                  <div className="create-playlist-content"><FontAwesomeIcon className="icon" icon={faPlusSquare} /> Create playlist</div>
+                {!playlistLoading && myPlaylist && !_.isEmpty(myPlaylist) && myPlaylist.map((playlistItem) => {
+                  return (
+                    <div key={playlistItem.id} className="show-playlist-item" onClick={() => handleAddToPlaylist(playlistItem.id)}>
+                      <FontAwesomeIcon className="icon" icon={faCompactDisc} /> {playlistItem.namePlaylist}
+                    </div>
+                  )
+                })}
+                </div>
+              )}
           </div>
         )}
       </td>

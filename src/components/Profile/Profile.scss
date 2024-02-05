@@ -1,74 +1,54 @@
-.profile-container {
-    padding: 45px 0;
-    color: #fff;
-    position: absolute;
-    z-index: 0;
+.profile-bg-image {
+    position: fixed;
+    top: 70px;
     left: 240px;
     right: 0;
-    top: 70px;
     bottom: 90px;
-    overflow-y: scroll;
+    z-index: 0;
 
-    &::-webkit-scrollbar {
-        width: 6px;
-      }
-    &::-webkit-scrollbar-thumb {
-        border-radius: 3px;
-        background: #2B1C42;
+    img {
+        width: 100%;
+        height: 100%;
     }
+}
 
-    .profile-bg-image {
-        position: fixed;
-        top: 70px;
-        left: 240px;
-        right: 0;
-        bottom: 90px;
-        z-index: 0;
+.profile-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+    z-index: 1;
 
-        img {
-            width: 100%;
-            height: 100%;
-        }
+    .profile-image {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
     }
-
-    .profile-header {
-        position: relative;
-        display: flex;
-        align-items: center;
-        margin-bottom: 80px;
-        z-index: 1;
-
-        .profile-image {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-        }
-        .profile-username {
-            margin-bottom: 0;
-            font-size: 50px;
-            font-weight: 700;
-        }
+    .profile-username {
+        margin-bottom: 0;
+        font-size: 50px;
+        font-weight: 700;
     }
+}
 
-    .p-zindex-1 { 
-        position: relative;
-        z-index: 1;
-    }
+.p-zindex-1 { 
+    position: relative;
+    z-index: 1;
+}
 
-    .content {
-        position: relative;
-        z-index: 1;
-    }
+.content {
+    position: relative;
+    z-index: 1;
+}
 
-    .profile {
-        position: relative;
-        z-index: 1;
-    }
+.profile {
+    position: relative;
+    z-index: 1;
+}
 
-    .redirect-link {
-        color: #fff;
-        background-color: #8e4cff;
-        width: 100px;
-        border-radius: 20px;
-    }
+.redirect-link {
+    color: #fff;
+    background-color: #8e4cff;
+    width: 100px;
+    border-radius: 20px;
 }

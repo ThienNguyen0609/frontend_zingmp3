@@ -1,10 +1,16 @@
 .nav-top-container {
     margin-left: 240px;
     height: 70px;
-    position: fixed;
-    z-index: 99;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
     width: calc(100% - 240px);
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: rgba(23,15,35,0.8);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
 
     .navbar-search {
         position: relative;
@@ -100,111 +106,7 @@
                                 }
                             }
                         }
-
-                        .result-item {
-                            display: flex;
-                            align-items: center;
-                            height: 70px;
-                            width: 100%;
-                            padding: 10px;
-                            border-radius: 5px;
-                            transition: all 0.5s;
-
-                            .item-image {
-                                display: flex;
-                                align-items: center;
-                                margin-right: 9px;
-                                cursor: pointer;
-
-                                .play-icon {
-                                    display: none;
-                                    color: #fff;
-                                    font-size: 18px;
-                                    position: absolute;
-                                    left: 39px;
-                                }
-                                img {
-                                    border-radius: 5px;
-                                    width: 52px;
-                                }
-
-                                &:hover .play-icon {
-                                    display: block;
-                                }
-                            }
-                            
-
-                            
-
-                            &:hover {
-                                background-color: #493961;
-                            }
-
-                            .item-info {
-                                flex: 1;
-
-                                .info-name {
-                                    margin-bottom: 0;
-                                    height: 24px;
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    color: #fff;
-                                  }
-                                  .info-actor {
-                                    margin-bottom: 0;
-                                    font-size: 12px;
-                                    color: #87838d;
-                                  }
-                            }
-
-                            .item-option-container {
-                                position: relative;
-                                display: none;
-
-                                .show-option {
-                                    display: none;
-                                    position: absolute;
-                                    background-color: #34224F;
-                                    color: #fff;
-                                    text-align: center;
-                                    width: 130px;
-                                    padding: 10px;
-                                    border-radius: 5px;
-                                    top: 0;
-                                    left: 40px;
-                                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-                                    cursor: pointer;
-                                }
-
-                                .item-option {
-                                    width: 40px;
-                                    height: 40px;
-                                    text-align: center;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    border-radius: 50%;
-                                    cursor: pointer;
-    
-                                    &:hover {
-                                        background-color: #695C7C;
-                                    }
-    
-                                    .option {
-                                        color: #fff;
-                                    }
-                                }
-                                .active {
-                                    display: block;
-                                }
-                            }
-
-                            
-
-                            &:hover .item-option-container {
-                                display: block;
-                            }
-                        }
+                        
                         .no-result {
                             color: #fff;
                             margin: 0 10px;

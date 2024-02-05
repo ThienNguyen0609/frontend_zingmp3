@@ -1,6 +1,6 @@
 import './Video.scss'
 
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
@@ -8,14 +8,25 @@ import { useState } from 'react'
 const Video = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [isClose, setIsClose] = useState(false)
+    const {state} = useLocation()
     const navigate = useNavigate()
+
+    console.log(state)
 
     const video = searchParams.get('v');
 
     return (
-        <div className={isClose ? 'video-container hide-video-container' : 'video-container'}>
+        <div className={`video-container ${isClose && "hide-video-container"}`}>
             <div className='video-bg'>
-                <img src={`https://i.ytimg.com/vi/${video}/hqdefault.jpg`} alt='ok' />
+                <div className='bg'
+                    style={{
+                        backgroundImage: `url(${require(`../../../../assets/images/Albums/${state.image}.jpg`)})`,
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'top center'
+                    }}
+                ></div>
+                <div className='bg-on'></div>
             </div>
             <div className='video-all'>
                 <div className='video-header'>
@@ -34,7 +45,7 @@ const Video = () => {
                     <div className='video'>
                         <iframe 
                             src={`https://www.youtube.com/embed/${video}?autoplay=1`} 
-                            frameborder="0" allow='autoplay' allowFullScreen={true}
+                            frameBorder="0" allow='autoplay' allowFullScreen={true}
                         ></iframe>
                     </div>
                 </div>
