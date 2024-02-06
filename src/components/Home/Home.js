@@ -17,19 +17,21 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const checkUserAuthenticated = async (userId) => {
-    const data = await authenticateService(userId);
-    if (data.errorCode) {
-      dispatch(getPlaylists(userId));
-      dispatch(getUser(userId))
-    } else {
-      const sessionData = {
-        isAuthenticated: false,
-        token: "",
-        data: null,
-      };
-      localStorage.setItem("account", JSON.stringify(sessionData));
-      navigate("/Login");
-    }
+    dispatch(getPlaylists(userId));
+    dispatch(getUser(userId))
+    // const data = await authenticateService(userId);
+    // if (data.errorCode) {
+    //   dispatch(getPlaylists(userId));
+    //   dispatch(getUser(userId))
+    // } else {
+    //   const sessionData = {
+    //     isAuthenticated: false,
+    //     token: "",
+    //     data: null,
+    //   };
+    //   localStorage.setItem("account", JSON.stringify(sessionData));
+    //   navigate("/Login");
+    // }
   };
 
   useEffect(() => {

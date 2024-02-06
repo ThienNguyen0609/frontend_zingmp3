@@ -15,13 +15,13 @@ instance.interceptors.response.use(
     switch (status) {
       // authentication (token related issues)
       case 401: {
-        // const sessionData = {
-        //   isAuthenticated: false,
-        //   token: "",
-        //   data: null
-        // }
-        // localStorage.setItem("account", JSON.stringify(sessionData));
-        // window.location.href = "/login";
+        const sessionData = {
+          isAuthenticated: false,
+          token: "",
+          data: null
+        }
+        localStorage.setItem("account", JSON.stringify(sessionData));
+        window.location.href = "/login";
         return Promise.reject(error);
       }
       // forbidden (permission related issues)
