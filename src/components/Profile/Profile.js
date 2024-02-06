@@ -8,6 +8,7 @@ import { showTypeToastify } from '../../servives/toastifyService'
 const Profile = () => {
     const [searchParams] = useSearchParams()
     const [user, setUser] = useState({})
+    console.log(user)
     useEffect(()=>{
         const getUser = async () => {
             const response = await getService(searchParams.get("u"))
