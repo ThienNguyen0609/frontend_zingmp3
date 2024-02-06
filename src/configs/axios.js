@@ -21,7 +21,7 @@ instance.interceptors.response.use(
           data: null
         }
         localStorage.setItem("account", JSON.stringify(sessionData));
-        window.location.href = "/login";
+        // window.location.href = "/login";
         return Promise.reject(error);
       }
       // forbidden (permission related issues)
