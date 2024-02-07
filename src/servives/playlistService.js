@@ -11,7 +11,7 @@ const getPlaylist = async (userId) => {
 }
 
 const getPlaylistSong = async (playlistId, userId) => {
-    const data = await axios.get(`http://localhost:8080/api/playlist/get/item/${playlistId}/${userId}`)
+    const data = await axios.get(`/playlist/get/item/${playlistId}/${userId}`)
     return data
 }
 
