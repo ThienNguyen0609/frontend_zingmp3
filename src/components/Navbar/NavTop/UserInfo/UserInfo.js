@@ -16,7 +16,6 @@ const UserInfo = (props) => {
         }
         localStorage.setItem("account", JSON.stringify(data));
         const response = await logoutService(props.user.id)
-        console.log(response)
         navigate('/Login')
     }
 

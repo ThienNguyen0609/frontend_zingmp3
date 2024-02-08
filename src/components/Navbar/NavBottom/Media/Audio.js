@@ -4,6 +4,7 @@ import Player from "./Player"
 import _ from "lodash"
 import { authorityService } from "../../../../servives/userService"
 import { showTypeToastify } from "../../../../servives/toastifyService"
+import { getSong } from "../../../../servives/songService"
 
 const Audio = ({list, playCurrentSong}) => {
     const audioRef = useRef()
@@ -106,7 +107,9 @@ const Audio = ({list, playCurrentSong}) => {
     }
 
     useEffect(()=>{
-        audioRef.current.muted = isMute ? true : false
+        if(currentSong && !_.isEmpty(currentSong)) {
+            audioRef.current.muted =  isMute ? true : false
+        }
     }, [isMute])
 
     useEffect(()=>{
@@ -131,23 +134,26 @@ const Audio = ({list, playCurrentSong}) => {
     }, [playCurrentSong])
 
     useEffect(()=>{
-        const session = JSON.parse(localStorage.getItem("currentSong"))
-        if(session && !_.isEmpty(session)) {
-            setCurrentSong(session)
+        const handleGetCurrentSong = async () => {
+            const response = await getSong(user.id)
+            if(response.errorCode) setCurrentSong(response.song)
+            else setCurrentSong({
+                "id": 16,
+                "name": "We don't talk anymore",
+                "src": "WeDontTalkAnymore",
+                "actor": "Charlie Puth",
+                "image": "WeDontTalkAnymore",
+                "classify": "PREMIUM",
+                "video": "3AtDnEC4zak"
+            })
         }
-        else setCurrentSong({
-            "id": 16,
-            "name": "We don't talk anymore",
-            "src": "WeDontTalkAnymore",
-            "actor": "Charlie Puth",
-            "image": "WeDontTalkAnymore",
-            "classify": "PREMIUM",
-            "video": "3AtDnEC4zak"
-        })
+
+        handleGetCurrentSong()
     }, [])
 
     return (
         <div>
+            {currentSong && !_.isEmpty(currentSong) && <>
             <audio 
                 src={
                     require(`../../../../assets/audios/${currentSong && !_.isEmpty(currentSong) && currentSong.src ? currentSong.src : "HayTraoChoAnh"}.mp3`)
@@ -159,8 +165,6 @@ const Audio = ({list, playCurrentSong}) => {
                 onPlaying={()=>handleOnPlaying()}
                 onTimeUpdate={()=>handleOnTimeUpdate()}
             />
-            {currentSong && !_.isEmpty(currentSong) && <>
-
             <Player 
                 currentSong={currentSong}
                 progress={progress}

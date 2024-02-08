@@ -11,8 +11,6 @@ const Video = () => {
     const {state} = useLocation()
     const navigate = useNavigate()
 
-    console.log(state)
-
     const video = searchParams.get('v');
 
     return (

@@ -12,7 +12,6 @@ const UsernameOrEmailForm = (props) => {
     const handleSubmitForm = async (e) => {
         e.preventDefault()
         const response = await checkAndSendEmailService(value)
-        console.log(response)
         if(response.response.errorCode) {
             props.setUsernameOrEmail(value)
             props.form1(false)

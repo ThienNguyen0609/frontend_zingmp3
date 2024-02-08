@@ -10,6 +10,7 @@ import { getPlaylists } from "../../store/features/playlist/playlistSlice";
 import { authenticateService } from "../../servives/userService";
 import { getUser } from "../../store/features/user/userSlice";
 import _ from "lodash";
+import { getCurrentSong } from "../../store/features/songs/currentSongSlice";
 
 const Home = () => {
   const { userLoading, user } = useSelector(state => state.user)
@@ -18,7 +19,8 @@ const Home = () => {
 
   const checkUserAuthenticated = async (userId) => {
     dispatch(getPlaylists(userId));
-    dispatch(getUser(userId))
+    dispatch(getUser(userId));
+    dispatch(getCurrentSong(userId));
     // const data = await authenticateService(userId);
     // if (data.errorCode) {
     //   dispatch(getPlaylists(userId));

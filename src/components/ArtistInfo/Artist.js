@@ -10,11 +10,14 @@ import Song from '../Song/Song'
 
 const Artist = () => {
     const {actorName} = useParams()
-    const [artistInfo, setArtistInfo] = useState({})
+    const [artist, setArtistInfo] = useState({})
+    const [songs, setSongs] = useState([])
+
     useEffect(()=>{
         const getArtistInfo = async () => {
-            const data = await axios.get(`/artist/${actorName}`)
-            setArtistInfo(data.artistInfo)
+            const response = await axios.get(`/artist/${actorName}`)
+            setArtistInfo(response.artist)
+            setSongs(response.songs)
         }
 
         getArtistInfo()
@@ -22,19 +25,19 @@ const Artist = () => {
     return (
         <div className='component-container'>
             <div className='my-container'>
-                {artistInfo && !_.isEmpty(artistInfo) && (<>
+                {artist && !_.isEmpty(artist) && (<>
                 <div className='header-on'></div>
                 <div className='artist-header' 
                     style={{
-                        backgroundImage: `url(${require(`../../assets/images/Artists/${artistInfo.artistImage}.jpg`)})`,
+                        backgroundImage: `url(${require(`../../assets/images/Artists/${artist.image}.jpg`)})`,
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
                     }}
                 ></div>
                 <div className='header-content'>
-                    <img src={require(`../../assets/images/Artists/${artistInfo.artistImage}.jpg`)} alt='logo' />
-                    <h1 className='artist-name ms-3'>{artistInfo.artistName}</h1>
+                    <img src={require(`../../assets/images/Artists/${artist.image}.jpg`)} alt='logo' />
+                    <h1 className='artist-name ms-3'>{artist.name}</h1>
                     <div className='play-icon ms-3'>
                         <FontAwesomeIcon icon={faPlayCircle} />
                     </div>
@@ -42,7 +45,7 @@ const Artist = () => {
                 <div className='body'>
                     <h1>Top songs</h1>
                 </div>
-                <div><Song array={artistInfo.songs} loading={false} option="Add to playlist" 
+                <div><Song array={songs} loading={false} option="Add to playlist" isPlaylist={false}
                     icon={faPlusCircle} /></div>
                 </>)}
             </div>

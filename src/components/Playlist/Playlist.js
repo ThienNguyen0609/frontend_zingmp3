@@ -11,7 +11,6 @@ import _ from 'lodash'
 const Playlist = () => {
     const {playlist, playlistLoading} = useSelector(state => state.playlist)
     const [showModal, setShowModal] = useState(false)
-    console.log(playlist)
     return (
         <div className='component-container'>
             {showModal && (

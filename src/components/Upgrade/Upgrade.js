@@ -32,7 +32,6 @@ const Upgrade = () => {
 
     useEffect(()=>{
         const session = JSON.parse(localStorage.getItem("account"));
-        console.log(session)
         if(session && !_.isEmpty(session) && !_.isEmpty(session.data)) setUser(session.data)
     }, [])
     return (

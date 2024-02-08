@@ -9,7 +9,6 @@ const spotifyToken = "BQBwiJSD201JfKw-SSuQVc-C82HTlx4VEpUVACx7bWnkdupug0_EKPHtzC
 
 export const getArtistAlbums = createAsyncThunk("artistTopTracks/getArtistAlbums", async (artistId) => {
     const message = await getSpotifyArtistAlbums(spotifyToken, artistId)
-    console.log(message.data)
     return message.data
 })
 

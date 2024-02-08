@@ -7,8 +7,8 @@ const initialState = {
 }
 
 export const getArtists = createAsyncThunk("artists/getArtists", async () => {
-    const data = await axios.get("/artist")
-    return data.data
+    const response = await axios.get("/artist")
+    return response.artists
 })
 
 const artistSlice = createSlice({

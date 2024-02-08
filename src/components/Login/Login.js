@@ -47,7 +47,6 @@ const Login = () => {
         else {
             try {
                 const res = await loginService(user);
-                console.log(res)
                 if(res.errorCode) {
                     let data = {
                         isAuthenticated: true,
