@@ -7,21 +7,23 @@ import CreatePlaylistModal from './CreatePlaylistModal/CreatePlaylistModal'
 import { useSelector } from 'react-redux'
 import PlaylistItem from './PlaylistItem/PlaylistItem'
 import _ from 'lodash'
+import DeletePlaylistModal from './DeletePlaylistModal/DeletePlaylistModal'
 
 const Playlist = () => {
     const {playlist, playlistLoading} = useSelector(state => state.playlist)
-    const [showModal, setShowModal] = useState(false)
+    const [showCreateModal, setShowCreateModal] = useState(false)
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
+    const [playlistId, setPlaylistId] = useState(0)
     return (
         <div className='component-container'>
-            {showModal && (
-                <CreatePlaylistModal showModal={showModal} setShowModal={setShowModal} />
-            )}
+            <CreatePlaylistModal showModal={showCreateModal} setShowModal={setShowCreateModal} />
+            <DeletePlaylistModal showModal={showDeleteModal} setShowModal={setShowDeleteModal} playlistId={playlistId} />
             <div className='my-container'>
                 <div className='playlist-content'>
                     <h1>Playlist <span className='play-icon'><FontAwesomeIcon icon={faPlayCircle} /></span></h1>
                 </div>
                 <div className='playlist mt-4'>
-                    <div className='add-playlist column' onClick={()=>setShowModal(true)}>
+                    <div className='add-playlist column' onClick={()=>setShowCreateModal(true)}>
                         <div className='text-center'>
                             <FontAwesomeIcon icon={faPlusCircle} />
                             <h4>Create playlist</h4>
@@ -29,7 +31,7 @@ const Playlist = () => {
                     </div>
                     {!playlistLoading && playlist && !_.isEmpty(playlist) && playlist.map((item) => {
                         return (
-                            <PlaylistItem key={item.id} playlistItem={item} />
+                            <PlaylistItem key={item.id} playlistItem={item} setShowDeleteModal={setShowDeleteModal} setPlaylistId={setPlaylistId} />
                         )
                     })}
                     <div className='column'></div>

@@ -26,7 +26,6 @@ const Song = (props) => {
                     <tr>
                         <th>Song</th>
                         <th className='text-center'>Classify</th>
-                        <th className='text-center'>Time</th>
                         <th className='text-right'></th>
                     </tr>
                 </thead>

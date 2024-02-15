@@ -20,8 +20,9 @@ const Sidebar = () => {
                 <li className='item'><NavLink to='/' >Discover</NavLink></li>
                 <li className='item'><NavLink to='/Library/Song' >Library</NavLink></li>
             </ul>
-            <ul className='ps-0 mb-0 pb-3'>
-                <li className='item'><NavLink to='/playlist' >Playlist</NavLink></li>
+            <ul className='ps-0 mb-0 pb-3 pt-3'>
+                <li className='item'><NavLink to='/mymusic/playlist' >Playlist</NavLink></li>
+                <li className='item'><NavLink to='/mymusic/favorite' >Favorite</NavLink></li>
             </ul>
         </div>
     )

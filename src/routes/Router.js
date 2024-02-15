@@ -23,6 +23,8 @@ import Profile from "../components/Profile/Profile";
 import EditUser from "../components/EditUser/EditUser";
 import ForgotPassword from "../components/ForgotPassword/ForgotPassword";
 import PlaylistSong from "../components/PlaylistSong/PlaylistSong";
+import Mymusic from "../components/Mymusic/Mymusic";
+import Favorite from "../components/Favorite/Favorite";
 
 const router = createBrowserRouter([
     {
@@ -56,8 +58,19 @@ const router = createBrowserRouter([
                     element: <Library />
                 },
                 {
-                    path: "/playlist",
-                    element: <Playlist />
+                    path: "/mymusic/",
+                    element: <Mymusic />,
+                    children: [
+                        {
+                            index: true,
+                            path: "playlist",
+                            element: <Playlist />
+                        },
+                        {
+                            path: "favorite",
+                            element: <Favorite />
+                        }
+                    ]
                 },
                 {
                     path: "/playlist/:playlistName",

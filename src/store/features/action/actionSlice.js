@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   currentSong: {},
-  currentList: []
+  currentList: [],
+  favoriteSongIds: [],
 }
 
 export const actionSlice = createSlice({
@@ -14,11 +15,14 @@ export const actionSlice = createSlice({
     },
     setCurrentList: (state, action) => {
       state.currentList = action.payload
-    }
+    },
+    setFavoriteSongIds: (state, action) => {
+      state.favoriteSongIds = action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setCurrentSong, setCurrentList } = actionSlice.actions
+export const { setCurrentSong, setCurrentList, setFavoriteSongIds } = actionSlice.actions
 
 export default actionSlice.reducer

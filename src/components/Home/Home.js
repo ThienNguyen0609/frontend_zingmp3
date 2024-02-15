@@ -11,6 +11,7 @@ import { authenticateService } from "../../servives/userService";
 import { getUser } from "../../store/features/user/userSlice";
 import _ from "lodash";
 import { getCurrentSong } from "../../store/features/songs/currentSongSlice";
+import { setFavoriteSongIds } from "../../store/features/action/actionSlice";
 
 const Home = () => {
   const { userLoading, user } = useSelector(state => state.user)
@@ -21,6 +22,7 @@ const Home = () => {
     dispatch(getPlaylists(userId));
     dispatch(getUser(userId));
     dispatch(getCurrentSong(userId));
+    if(!userLoading) dispatch(setFavoriteSongIds(user.favoritesongid))
     // const data = await authenticateService(userId);
     // if (data.errorCode) {
     //   dispatch(getPlaylists(userId));

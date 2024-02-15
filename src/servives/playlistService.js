@@ -5,6 +5,11 @@ const createPlaylist = async (namePlaylist, userId) => {
     return data
 }
 
+const deletePlaylist = async (userId, playlistId) => {
+    const data = await axios.post('/playlist/delete', {userId: userId, playlistId: playlistId})
+    return data
+}
+
 const getPlaylist = async (userId) => {
     const data = await axios.get(`/playlist/get/${userId}`)
     return data
@@ -33,6 +38,6 @@ const removeSongFromPlaylist = async (playlistId, songId) => {
 }
 
 export {
-    createPlaylist, getPlaylistSong,
+    createPlaylist, deletePlaylist, getPlaylistSong,
     getPlaylist, addSongToPlaylist, removeSongFromPlaylist
 }

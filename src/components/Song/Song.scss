@@ -84,11 +84,33 @@
             line-height: 18px;
             text-align: center;
           }
+          .favorite-icon {
+            color: #fff;
+            margin-right: 15px;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            border-radius: 50%;
+
+            &:hover {
+              background-color: hsla(0,0%,100%,.1);
+            }
+          }
+
+          .active {
+            color: #9B4DE0;
+          }
           .song-option {
             opacity: 0.5;
             cursor: pointer;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            border-radius: 50%;
 
             &:hover {
+              background-color: hsla(0,0%,100%,.1);
               opacity: 1;
             }
           }
@@ -153,24 +175,32 @@
                   background-color: #493961;
                 }
               }
-              .show-playlist-item {
-                margin-top: 5px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                padding: 0 10px;
-                border-bottom: 1px solid rgba(254, 255, 255, 0.1);
-                border-radius: 5px;
-                cursor: pointer;
 
-                &:hover {
-                  background-color: #493961;
+              .display-playlist {
+                overflow: auto;
+                scrollbar-width: none;
+                height: 184px;
+
+                .show-playlist-item {
+                  margin-top: 5px;
+                  height: 40px;
+                  display: flex;
+                  align-items: center;
+                  padding: 0 10px;
+                  border-bottom: 1px solid rgba(254, 255, 255, 0.1);
+                  border-radius: 5px;
+                  cursor: pointer;
+  
+                  &:hover {
+                    background-color: #493961;
+                  }
+                }
+  
+                .icon {
+                  margin-right: 10px;
                 }
               }
-
-              .icon {
-                margin-right: 10px;
-              }
+              
             }
           }
         }
