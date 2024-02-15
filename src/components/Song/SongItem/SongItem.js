@@ -107,7 +107,7 @@ const SongItem = (props) => {
       <td className="text-right position-relative">
         <div className="d-flex">
           <div 
-          className={`favorite-icon ${favoriteSongIds.includes(item.id) ? "active" : ""}`}
+          className={`favorite-icon ${favoriteSongIds?.includes(item.id) ? "active" : ""}`}
           onClick={() => handleFavorSong(item.id)}
           >
             <FontAwesomeIcon icon={faHeart} />
