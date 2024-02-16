@@ -22,7 +22,6 @@ const Home = () => {
     dispatch(getPlaylists(userId));
     dispatch(getUser(userId));
     dispatch(getCurrentSong(userId));
-    if(!userLoading) dispatch(setFavoriteSongIds(user.favoritesongid))
     // const data = await authenticateService(userId);
     // if (data.errorCode) {
     //   dispatch(getPlaylists(userId));
@@ -43,11 +42,17 @@ const Home = () => {
     if (!session || !session.isAuthenticated) {
       navigate("/Login");
     } else {
-      const user = session.data;
+      const data = session.data;
 
-      checkUserAuthenticated(user.id);
+      checkUserAuthenticated(data.id);
     }
   }, []);
+    
+  useEffect(() => {
+    if(!userLoading && user && !_.isEmpty(user)) {
+      dispatch(setFavoriteSongIds(user.favoritesongid))
+    }
+  }, [user])
   return (
     <>
       {!userLoading && user && !_.isEmpty(user) && (
