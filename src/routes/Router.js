@@ -25,6 +25,7 @@ import ForgotPassword from "../components/ForgotPassword/ForgotPassword";
 import PlaylistSong from "../components/PlaylistSong/PlaylistSong";
 import Mymusic from "../components/Mymusic/Mymusic";
 import Favorite from "../components/Favorite/Favorite";
+import AddSong from "../components/Admin/AddSong/AddSong";
 
 const router = createBrowserRouter([
     {
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
                 {
                     path: "/user/profile/edit",
                     element: <EditUser />
+                },
+                {
+                    path: "/admin/addsong",
+                    element: <AddSong />
                 }
             ]
         },

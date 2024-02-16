@@ -75,7 +75,7 @@ const EditForm = ({user}) => {
                 <Form.Control
                   type="text"
                   name="country"
-                  value={`${country}`}
+                  value={`${country ? country : ""}`}
                   className="form-color"
                   onChange={(e)=>setCountry(e.target.value)}
                 />

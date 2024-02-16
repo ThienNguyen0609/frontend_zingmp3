@@ -1,7 +1,9 @@
+import { useSelector } from 'react-redux';
 import './Sidebar.scss'
 import { Link, NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
+    const { user } = useSelector(state => state.user)
     return (
         <div className='sidebar-container'>
             <div className='zing-content'>
@@ -24,6 +26,11 @@ const Sidebar = () => {
                 <li className='item'><NavLink to='/mymusic/playlist' >Playlist</NavLink></li>
                 <li className='item'><NavLink to='/mymusic/favorite' >Favorite</NavLink></li>
             </ul>
+            {user.role === "admin" && (
+            <ul className='ps-0 mb-0 pb-3 pt-3'>
+                <li className='item'><NavLink to='/admin/addsong' >Add song</NavLink></li>
+            </ul>
+            )}
         </div>
     )
 }

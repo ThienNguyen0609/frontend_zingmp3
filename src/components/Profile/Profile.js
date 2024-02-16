@@ -46,7 +46,7 @@ const Profile = () => {
                             <dd className='col-sm-4 mb-3'>{user.email}</dd>
                         </dl>
                     </div>
-                    <Link className='btn redirect-link' to={`/user/profile/edit?u=${user.id}`}>
+                    <Link className='redirect-link' to={`/user/profile/edit?u=${user.id}`}>
                         Edit
                     </Link>
                 </div>

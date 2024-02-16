@@ -47,8 +47,18 @@
 }
 
 .redirect-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     color: #fff;
     background-color: #8e4cff;
     width: 100px;
+    height: 40px;
     border-radius: 20px;
+    transition: all .5s ease;
+
+    &:hover {
+        background-color: #6c17ff;
+    }
 }
