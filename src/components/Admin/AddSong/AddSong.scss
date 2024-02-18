@@ -1,0 +1,16 @@
+.add-song-content {
+
+    .btn-add {
+        width: 100px;
+        height: 40px;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        background-color: #8E4CFF;
+        transition: all .5s ease;
+
+        &:hover {
+            background-color: #6C17FF;
+        }
+    }
+}

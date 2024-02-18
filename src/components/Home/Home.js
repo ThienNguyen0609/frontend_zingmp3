@@ -9,6 +9,8 @@ import { useEffect } from "react";
 import { getPlaylists } from "../../store/features/playlist/playlistSlice";
 import { authenticateService } from "../../servives/userService";
 import { getUser } from "../../store/features/user/userSlice";
+import { getSongs } from '../../store/features/songs/songSlice'
+import { getArtists } from '../../store/features/artists/artistSlice';
 import _ from "lodash";
 import { getCurrentSong } from "../../store/features/songs/currentSongSlice";
 import { setFavoriteSongIds } from "../../store/features/action/actionSlice";
@@ -27,6 +29,8 @@ const Home = () => {
       dispatch(getPlaylists(userId));
       dispatch(getUser(userId));
       dispatch(getCurrentSong(userId));
+      dispatch(getSongs())
+      dispatch(getArtists())
     } else {
       const sessionData = {
         isAuthenticated: false,

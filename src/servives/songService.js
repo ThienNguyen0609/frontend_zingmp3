@@ -15,11 +15,16 @@ const getFavorSong = async (userId) => {
     return response
 }
 
+const addSongToLib = async (song) => {
+    const response = await axios.post('/song/library/addtolib', {song: song})
+    return response
+}
+
 const updateFavorSong = async (userId, favorSongIds) => {
     const response = await axios.post('/song/favorite/update', {userId: userId, favorSongIds: favorSongIds})
     return response
 }
 
 export {
-    getAllSong, getSong, getFavorSong, updateFavorSong
+    getAllSong, getSong, getFavorSong, addSongToLib, updateFavorSong
 }
